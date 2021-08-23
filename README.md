@@ -1,50 +1,10 @@
-Ingress Intel Total Conversion (IITC)
+Ingress intel map total conversion - TypeScript Edition (IITC-TS)
 =====================================
 
-<!-- [START badges] -->
-[![Build Status](https://img.shields.io/travis/com/iitc-ce/ingress-intel-total-conversion/master?label=beta)](https://travis-ci.com/IITC-CE/ingress-intel-total-conversion)
-[![Build Status](https://img.shields.io/travis/com/iitc-ce/ingress-intel-total-conversion/test-builds?label=test-builds)](https://travis-ci.com/IITC-CE/ingress-intel-total-conversion)
-[![Docs Status](https://readthedocs.org/projects/iitc-ce/badge/?version=latest)](https://readthedocs.org/projects/iitc-ce/)
-[![LICENSE](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
-<!-- [END badges] -->
+Goal of this project is to bring the IITC-TS code to modern development environmet by using TypeScript and esbuild as bundler for the monkeyScript.
 
-IITC is a browser add-on that modifies the Ingress intel map.
-It is faster than the standard site, and offers many more features.
-It is available for desktop browsers, such as Firefox and Chrome, and as a mobile application.
+As a result many of the existing bugs, vulnerabilities, silly development decicions, performance issues... etc. from the past will be fixed.
 
-**IITC "Community Edition"** (**_IITC-CE_**) started by [modos189](https://github.com/modos189) to continue development of stalled [iitc-project](https://github.com/iitc-project/ingress-intel-total-conversion).
+IITC-TS will not be designed to support existing plugins, rather the plugins can be made to support IITC-TS.
 
-**[Website](https://iitc.app/) | [Documentation](https://iitc-ce.rtfd.io/) | [Telegram channel](https://t.me/iitc_news)**
-
-
-## Users
-
-Install IITC: https://iitc.app/
-
-Latest news, release announcements, etc:
-- https://www.reddit.com/r/IITC/
-- https://t.me/iitc_news
-
-[Report](https://github.com/IITC-CE/ingress-intel-total-conversion/issues/new) an issue: [wiki/Reporting-Bugs](https://github.com/IITC-CE/ingress-intel-total-conversion/wiki/Reporting-Bugs)
-
-
-## Developers
-
-See [Contribution Guidelines](https://github.com/IITC-CE/ingress-intel-total-conversion/wiki/CONTRIBUTING.md)
-and [Quickstart](https://github.com/IITC-CE/ingress-intel-total-conversion/wiki/HACKING.md#quickstart).
-
-
-## Related projects
-
-- **https://iitc.app**: IITC-CE homepage, template developed [here][iitc.app].
-
-- **[IITC-Button]**: browser extension, the easiest (though not sole) way to use IITC on desktop.
-
-- **[IITC Mobile]**: Android app developed [here](https://github.com/IITC-CE/ingress-intel-total-conversion/tree/master/mobile).
-
-- **[IITC-Mobile for iOS]**: 3rd-party application, developed by [_Yangkun Zhang_](https://github.com/HubertZhang).
-
-[iitc.app]: https://github.com/IITC-CE/iitc.app
-[IITC-Button]: https://github.com/IITC-CE/IITC-Button
-[IITC Mobile]: https://github.com/IITC-CE/ingress-intel-total-conversion/wiki/IITC-Mobile-(Android-app)
-[IITC-Mobile for iOS]: https://github.com/HubertZhang/IITC-Mobile
+Project is at very early stages and userscript is no where near to usable yet.

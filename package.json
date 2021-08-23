@@ -1,17 +1,50 @@
 {
-  "name": "iitc-ce",
-  "description": "Ingress Intel Total Conversion (Community Edition)",
-  "homepage": "https://iitc.app/",
-  "repository": "https://github.com/IITC-CE/ingress-intel-total-conversion.git",
-  "license": "ISC",
-  "private": true,
-  "devDependencies": {
-    "eslint": "^7.21.0"
-  },
-  "scripts": {
-    "build": "npm run build:local",
-    "build:local": "./build.py local",
-    "build:mobile": "./build.py mobile",
-    "fileserver": "./web_server_local.py local"
-  }
+    "name": "iitc-ts-mh",
+    "description": "Ingress intel map total conversion - TypeScript Edition",
+    "homepage": "https://iitc.app/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IITC-CE/ingress-intel-total-conversion.git"
+    },
+    "license": "ISC",
+    "private": true,
+    "devDependencies": {
+        "@types/jquery": "^3.5.6",
+        "@types/node": "^16.6.0",
+        "eslint": "^7.21.0"
+    },
+    "scripts": {
+        "build": "npm run build:local",
+        "build:local": "./build.py local",
+        "build:mobile": "./build.py mobile",
+        "fileserver": "./web_server_local.py local"
+    },
+    "bugs": {
+        "url": "https://github.com/IITC-CE/ingress-intel-total-conversion/issues"
+    },
+    "version": "0.0.1",
+    "main": "build.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "keywords": [
+        "ingress",
+        "intel",
+        "iitc",
+        "enl",
+        "res"
+    ],
+    "author": "Matias Hiltunen",
+    "dependencies": {
+
+        "@types/leaflet": "^1.7.4",
+        "esbuild": "^0.12.19",
+        "jquery": "^3.6.0",
+        "jqueryui": "^1.11.1",
+        "leaflet": "^1.7.1",
+        "leaflet-canvas-markers": "^1.0.7",
+        "leaflet.geodesic": "^2.5.5-0",
+        "leaflet.gridlayer.googlemutant": "^0.13.4",
+        "overlapping-marker-spiderfier": "^1.1.4"
+    }
 }
