@@ -7,7 +7,7 @@ As a result many of the existing bugs, vulnerabilities, silly development decisi
 
 IITC-TS will not be designed to support existing plugins, rather the plugins can be made to support IITC-TS.
 
-#Project is at very early stages and userscript is no where near to usable yet.
+Project is at very early stages and userscript is no where near to usable yet.
 
 As the project is at very early stages, no proper build/testing flow has been made.
 If you want to build and try out the userScript anyway then follow the steps ahead:
