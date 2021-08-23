@@ -1,11 +1,15 @@
-import fs from 'fs'
+import { rmSync, readFileSync, readdirSync, writeFileSync } from 'fs'
 import { buildSync, serve } from 'esbuild'
 
-
+const outfile = 'total-conversion-build.js'
+const userScriptPath = "total-conversion-build.user.js"
+const userMetaPath = "total-conversion-build.meta.js"
 const author = "Matias Hiltunen"
 const version = "0.0.1"
-const updateUrl = "http://127.0.0.1:8080/total-conversion-build.meta.js"
-const downloadUrl = "http://127.0.0.1:8080/total-conversion-build.user.js"
+const updateUrl = "http://127.0.0.1:8080/" + userMetaPath
+const downloadUrl = "http://127.0.0.1:8080/" + userScriptPath
+
+const isServe = process.argv.includes("serve");
 
 const monkeyMeta = `// ==UserScript==
 // @author         ${author}
@@ -38,9 +42,7 @@ script.appendChild(document.createTextNode('(' + wrapper + ')(' + JSON.stringify
 (document.body || document.head || document.documentElement).appendChild(script);`
 
 
-const outfile = 'total-conversion-build.js'
-const userScriptPath = "total-conversion-build.user.js"
-const userMetaPath = "total-conversion-build.meta.js"
+
 
 const buildConfig = {
     entryPoints: ['./core/total-conversion-build.ts'],
@@ -55,27 +57,29 @@ const buildConfig = {
 const buildMonkeyScript = () => {
     const transpiledTsFile = buildConfig.outdir + '/' + outfile
 
-    let fileContent = monkeyHeader + fs.readFileSync(transpiledTsFile, 'utf-8') + monkeyBottom
+    const fileContent = monkeyHeader + readFileSync(transpiledTsFile, 'utf-8') + monkeyBottom
 
-    if (fs.readdirSync(buildConfig.outdir).includes(userScriptPath)) fs.rmSync(buildConfig.outdir + '/' + userScriptPath)
-    fs.writeFileSync(buildConfig.outdir + '/' + userScriptPath, fileContent)
+    if (readdirSync(buildConfig.outdir).includes(userScriptPath)) rmSync(buildConfig.outdir + '/' + userScriptPath)
+    writeFileSync(buildConfig.outdir + '/' + userScriptPath, fileContent)
 
-    if (fs.readdirSync(buildConfig.outdir).includes(userMetaPath)) fs.rmSync(buildConfig.outdir + '/' + userMetaPath)
-    fs.writeFileSync(buildConfig.outdir + '/' + userMetaPath, monkeyMeta)
+    if (readdirSync(buildConfig.outdir).includes(userMetaPath)) rmSync(buildConfig.outdir + '/' + userMetaPath)
+    writeFileSync(buildConfig.outdir + '/' + userMetaPath, monkeyMeta)
 }
 
 buildSync(buildConfig)
 buildMonkeyScript()
 
-serve({
-    servedir: buildConfig.outdir,
-    port: 8080,
-    host: "localhost",
-}, {}).then((server) => {
+if (isServe) {
+    serve({
+        servedir: buildConfig.outdir,
+        port: 8080,
+        host: "localhost",
+    }, {}).then((server) => {
 
-    let { host, port } = server;
+        let { host, port } = server;
 
-    console.log(
-        `Development server is running on http://${host}:${port}`
-    );
-});
+        console.log(
+            `install IITC userscript: http://${host}:${port}/${userScriptPath}`
+        );
+    });
+}

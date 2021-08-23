@@ -14,19 +14,14 @@
     },
     "type": "module",
     "scripts": {
-        "build": "npm run build:local",
-        "build:local": "./build.py local",
-        "build:mobile": "./build.py mobile",
-        "fileserver": "./web_server_local.py local"
+        "build": "node ./build.js",
+        "serve": "node ./build.js serve"
     },
     "bugs": {
         "url": "https://github.com/MatiasHiltunen/IITC-TypeScript-Edition/issues"
     },
     "version": "0.0.1",
     "main": "build.js",
-    "directories": {
-        "doc": "docs"
-    },
     "keywords": [
         "ingress",
         "intel",

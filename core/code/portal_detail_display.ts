@@ -17,7 +17,7 @@ import { fixPortalImageUrl, getMaxOutgoingLinks, getPortalAttackValues, getPorta
 import $ from 'jquery'
 import { GeodesicCircleClass } from 'leaflet.geodesic';
 import { Team } from './player';
-/* const {geodesicCircle} = require('../external/L.Geodesic') */
+
 
 export const resetScrollOnNewPortal = function () {
   if (store.selectedPortal !== store.lastVisible) {
