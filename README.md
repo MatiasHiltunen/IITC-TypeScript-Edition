@@ -1,7 +1,7 @@
 Ingress intel map total conversion - TypeScript Edition (IITC-TS)
-=====================================
+=================================================================
 
-Goal of this project is to bring the IITC code to modern development environmet by using TypeScript and esbuild as bundler for the monkeyScript.
+Goal of this project is to bring the IITC code to modern development environmet by using TypeScript and esbuild as bundler for the monkeyScripts(TamperMonkey, GreaseMonkey).
 
 As a result many of the existing bugs, vulnerabilities, silly development decicions, performance issues... etc. from the past will be fixed.
 
@@ -14,17 +14,16 @@ If you want to build and try out the userScript anyway then follow the steps ahe
 
 Use this script at your own risk, your account may be banned by Niantic by using this.
 
-clone the project
+1. clone the project
 
-In the project folder:
+2. In the project folder:
 
-Install dependencies
+3. Install dependencies
 >npm install
 
-Run build script (esbuild) build.js
->node build.js
+4. Serve installable userscript on localhost:
+>npm run serve
 
-Copy the script from the ./core/total-conversion-build.js to the monkeyScript in the browser.
-
-go to https://intel.ingress.com/
+5. Build userscript files without serving
+>npm run build
 
