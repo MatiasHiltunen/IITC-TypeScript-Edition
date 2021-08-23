@@ -7,9 +7,7 @@ const monkeyHeader = `// ==UserScript==
 // @description    Total conversion for the ingress intel map.
 // @run-at         document-end
 // @id             total-conversion-build
-// @namespace      https://github.com/IITC-CE/ingress-intel-total-conversion
-// @updateURL      https://iitc.app/build/release/total-conversion-build.meta.js
-// @downloadURL    https://iitc.app/build/release/total-conversion-build.user.js
+// @namespace      https://github.com/MatiasHiltunen/IITC-TypeScript-Edition
 // @match          https://intel.ingress.com/*
 // @grant          none
 // ==/UserScript==
@@ -19,12 +17,6 @@ function wrapper(plugin_info) {
 
 if (typeof window.plugin !== 'function') window.plugin = function() {};
 
-//PLUGIN AUTHORS: writing a plugin outside of the IITC build environment? if so, delete these lines!!
-//(leaving them in place might break the 'About IITC' page or break update checks)
-plugin_info.buildName = 'release';
-plugin_info.dateTimeVersion = '2021-07-16-195801';
-plugin_info.pluginId = 'total-conversion-build';
-//END PLUGIN AUTHORS NOTE
 
 window.script_info = plugin_info;
 `
