@@ -1,7 +1,7 @@
 Ingress intel map total conversion - TypeScript Edition (IITC-TS)
 =====================================
 
-Goal of this project is to bring the IITC-TS code to modern development environmet by using TypeScript and esbuild as bundler for the monkeyScript.
+Goal of this project is to bring the IITC code to modern development environmet by using TypeScript and esbuild as bundler for the monkeyScript.
 
 As a result many of the existing bugs, vulnerabilities, silly development decicions, performance issues... etc. from the past will be fixed.
 
