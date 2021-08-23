@@ -14,16 +14,14 @@ If you want to build and try out the userScript anyway then follow the steps ahe
 
 Use this script at your own risk, your account may be banned by Niantic by using this.
 
-1. clone the project
+Clone the project and run in the project folder:
 
-2. In the project folder:
-
-3. Install dependencies
+Install dependencies
 >npm install
 
-4. Serve installable userscript on localhost:
+Serve installable userscript on localhost:
 >npm run serve
 
-5. Build userscript files without serving
+Build userscript files without serving
 >npm run build
 
