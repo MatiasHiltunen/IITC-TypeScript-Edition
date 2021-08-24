@@ -7,6 +7,8 @@ import { getTeam } from './entity_info';
 import { show } from './panes';
 import $ from 'jquery'
 import { resetScrollOnNewPortal } from './portal_detail_display';
+/* // @ts-ignore
+import smartphoneCss from '../style/smartphone.txt' */
 
 export const isSmartphone = function () {
   // this check is also used in main.js. Note it should not detect
@@ -44,12 +46,14 @@ export const smartphone = {
 
 export const runOnSmartphonesBeforeBoot = function () {
   if (!isSmartphone()) return;
+
+  console.warn("running as smartphone")
   /* log.warn('running smartphone pre boot stuff'); */
 
   // add smartphone stylesheet
   let style = document.createElement('style');
   style.type = 'text/css';
-  style.appendChild(document.createTextNode('@include_string:smartphone.css@'));
+/*   style.appendChild(document.createTextNode(smartphoneCss)); */
   document.head.appendChild(style);
 
   // don’t need many of those ?????????????
