@@ -6,6 +6,13 @@ import { store } from "./code/store";
 import { body } from "./views/body";
 import { head, loginHead } from "./views/head";
 
+
+// ensure plugin framework is there, even if iitc is not yet loaded
+// @ts-ignore
+if (typeof window.plugin !== 'function') window.plugin = function() {};
+// @ts-ignore
+window.script_info = plugin_info;
+
 // REPLACE ORIGINAL SITE 
 if (document.documentElement.getAttribute('itemscope') !== null) {
   throw new Error('Ingress Intel Website is down, not a userscript issue.');
@@ -37,6 +44,7 @@ document.head.append(head)
 document.body = body
 
 window.addEventListener('load', boot);
+
 
 
 

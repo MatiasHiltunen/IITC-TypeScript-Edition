@@ -24,28 +24,16 @@ const monkeyMeta = `// ==UserScript==
 // @grant          none
 // ==/UserScript==`
 
-const monkeyHeader = `${monkeyMeta}
-function wrapper(plugin_info) {
-// ensure plugin framework is there, even if iitc is not yet loaded
-if (typeof window.plugin !== 'function') window.plugin = function() {};
-window.script_info = plugin_info;
-`
+const transpiledTsFile = outDir + '/' + outfile
+const monkeyHeader = (script) => `${monkeyMeta}
 
-const monkeyBottom = `
-} // wrapper end
-// inject code into site context
-var script = document.createElement('script');
-var info = {};
-if (typeof GM_info !== 'undefined' && GM_info && GM_info.script) info.script = { version: GM_info.script.version, name: GM_info.script.name, description: GM_info.script.description };
-script.appendChild(document.createTextNode('(' + wrapper + ')(' + JSON.stringify(info) + ');'));
-(document.body || document.head || document.documentElement).appendChild(script);`
+if (typeof GM_info !== 'undefined' && GM_info && GM_info.script){const script = document.createElement('script');const info = {script: { version: GM_info.script.version, name: GM_info.script.name, description: GM_info.script.description }};script.appendChild(document.createTextNode(((plugin_info) => {${script}})(JSON.stringify(info))));(document.body || document.head || document.documentElement).appendChild(script);}`
 
 
 
 export const buildMonkeyScript = () => {
-    const transpiledTsFile = outDir + '/' + outfile
 
-    const fileContent = monkeyHeader + readFileSync(transpiledTsFile, 'utf-8') + monkeyBottom
+    const fileContent = monkeyHeader(readFileSync(transpiledTsFile, 'utf-8'))
 
     if (readdirSync(outDir).includes(userScriptPath)) rmSync(outDir + '/' + userScriptPath)
     writeFileSync(outDir + '/' + userScriptPath, fileContent)

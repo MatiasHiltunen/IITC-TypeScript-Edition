@@ -6,7 +6,7 @@ const isServe = process.argv.includes("serve");
 const buildConfig = {
     entryPoints: ['./core/total-conversion-build.ts'],
     bundle: true,
-    minify: false,
+    minify: true,
     sourcemap: false,
     target: 'es6',
     loader: { '.png': 'dataurl' },
@@ -26,7 +26,7 @@ readdirSync(stylesPath)
             bundle: true,
             outfile: stylesPath + cssFile.replace('css', 'txt'),
             write: true,
-            minify: false
+            minify: true
         })
     })
 
