@@ -28,7 +28,8 @@ import markerUrl from '../images/marker-ingress.png'
 import marker2xUrl from '../images/marker-ingress.png'
 // @ts-ignore
 import markerShadowUrl from '../images/marker-ingress.png'
-import { Team } from './player';
+import { Player, Team } from './player';
+import { RegionScoreboard } from './region_scoreboard';
 
 
 
@@ -970,7 +971,7 @@ function prepPluginsToLoad() {
 
 
 export const boot = function () {
-
+  
     runOnSmartphonesBeforeBoot()
 
     const loadPlugins = prepPluginsToLoad();
@@ -1017,6 +1018,11 @@ export const boot = function () {
     setupLayerChooserApi();
     runOnSmartphonesAfterBoot();
     runHooks('iitcLoaded');
+
+     // fixed Addons
+    const rboard = new RegionScoreboard()
+
+    rboard.setup()
 
 }
 
