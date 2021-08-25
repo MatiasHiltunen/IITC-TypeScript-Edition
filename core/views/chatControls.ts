@@ -1,4 +1,4 @@
-import { E } from "../tools/newElement";
+import { E } from "../tools/dom_manipulation";
 
 export const chatControls = [
 

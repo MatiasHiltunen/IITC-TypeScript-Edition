@@ -7,10 +7,18 @@ import { body } from "./views/body";
 import { head, loginHead } from "./views/head";
 
 
+
+declare global {
+  var plugin: any;  // window.plugin is needed for monkeyscript
+  var script_info: any; // window.script_info is probably needed for monkeyscript
+  var plugin_info: {} // plugin_info comes from monkeyScript wrapper function and is not part of the global object
+  var PLAYER: { nickname, available_invites, energy, xm_capacity, ap, team, min_ap_for_current_level, min_ap_for_next_level, verified_level }
+  var android: any
+}
+
 // ensure plugin framework is there, even if iitc is not yet loaded
-// @ts-ignore
 if (typeof window.plugin !== 'function') window.plugin = function() {};
-// @ts-ignore
+
 window.script_info = plugin_info;
 
 // REPLACE ORIGINAL SITE 
@@ -22,7 +30,6 @@ if (document.documentElement.getAttribute('itemscope') !== null) {
 window.onload = () => { };
 document.body.onload = () => { };
 
-// @ts-ignore
 if (!window.PLAYER || !PLAYER.nickname) {
   // page doesn’t have a script tag with player information.
   if (document.getElementById('header_email')) {
@@ -36,7 +43,7 @@ if (!window.PLAYER || !PLAYER.nickname) {
   throw new Error("Couldn't retrieve player data. Are you logged in?");
 }
 
-//@ts-ignore
+
 store.PLAYER = new Player(window.PLAYER)
 
 document.head.innerHTML = ''

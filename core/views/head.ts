@@ -1,4 +1,4 @@
-import { E } from "../tools/newElement";
+import { E } from "../tools/dom_manipulation";
 
 // Import css files with txt file extension, check the build script for more details
 // ts-ignore is required here as the esbuild does the injection in the build time.

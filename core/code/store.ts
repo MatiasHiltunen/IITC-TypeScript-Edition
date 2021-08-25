@@ -26,7 +26,7 @@ export const store:Store = {
     fieldsFactionLayers: null,
     artifact: null,
     portalDetail: null,
-
+    tooltipClearerHasBeenSetup: false,
     latestFailedRequestTime: null,
     blockOutOfDateRequests: null,
 
@@ -81,7 +81,7 @@ interface Store {
     fieldsFactionLayers: L.LayerGroup[],
     artifact: any,
     portalDetail: PortalDetail,
-
+    tooltipClearerHasBeenSetup: boolean,
     latestFailedRequestTime: any,
     blockOutOfDateRequests: any,
 

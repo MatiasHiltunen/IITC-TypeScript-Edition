@@ -11,7 +11,7 @@ interface ElementProperties {
 
 interface Listener {
     event: string,
-    action(e:Event): void
+    action(e: Event): void
 }
 
 export const E = ({ className, text, id, children, element = 'DIV', attributes, value, eventListener }: ElementProperties): HTMLElement => {
@@ -25,3 +25,27 @@ export const E = ({ className, text, id, children, element = 'DIV', attributes, 
     if (eventListener) eventListener instanceof Array ? eventListener.forEach(e => el.addEventListener(e.event, e.action)) : el.addEventListener(eventListener.event, eventListener.action)
     return el
 }
+
+export const S = (identifier: string): HTMLElement => {
+
+    return document.querySelector(identifier)
+
+}
+
+export const htmlToElement = (html:string) => {
+    let template:HTMLTemplateElement = document.createElement('template');
+    html = html.trim();
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
+const formatProvider = (func = s => s) => new Proxy(func, {
+    get: function(f, tag:string) {
+        return formatProvider((...args) => {
+            return f(`<${tag}>${args.join('')}</${tag}>`);
+        })
+    },
+});
+
+export const F = formatProvider();
+

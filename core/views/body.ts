@@ -1,4 +1,4 @@
-import { E } from "../tools/newElement"
+import { E } from "../tools/dom_manipulation"
 import { chatInput } from "./chatInput"
 import { chatControls } from "./chatControls"
 import { sidebar, sidebarToggle } from "./sidebar"

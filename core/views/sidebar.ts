@@ -1,5 +1,5 @@
 import { aboutIITC, androidPermalink, setPermaLink } from "../code/utils_misc"
-import { E } from "../tools/newElement"
+import { E } from "../tools/dom_manipulation"
 
 export const sidebarToggle = E({
     element: 'a',

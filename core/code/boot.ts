@@ -28,8 +28,9 @@ import markerUrl from '../images/marker-ingress.png'
 import marker2xUrl from '../images/marker-ingress.png'
 // @ts-ignore
 import markerShadowUrl from '../images/marker-ingress.png'
-import { Player, Team } from './player';
+import { Team } from './player';
 import { RegionScoreboard } from './region_scoreboard';
+import { E, S } from '../tools/dom_manipulation';
 
 
 
@@ -536,19 +537,37 @@ export const setupPlayerStat = function () {
         '\n\Invites:\t' + store.PLAYER.available_invites +
         '\n\nNote: your player stats can only be updated by a full reload (F5)';
 
-    $('#playerstat').html('' +
-        '<h2 title="' + t + '">' + store.PLAYER.verified_level + '&nbsp;' +
-        '<div id="name">' +
+    S('#playerstat').replaceWith(E({
+        element: 'h2', attributes: { title: t }, text: store.PLAYER.verified_level.toString() + '    ', children: [
 
-        '<span class="' + store.PLAYER.cls + '">' + store.PLAYER.nickname + '</span>' +
-        '<a href="https://intel.ingress.com/logout" id="signout">sign out</a>' +
-        '</div>' +
-        '<div id="stats">' +
-        '<sup>XM: ' + store.PLAYER.xmRatio + '%</sup>' +
-        '<sub>' + (store.PLAYER.min_ap_for_next_level > 0 ? 'level: ' + store.PLAYER.lvlApProg + '%' : 'max level') + '</sub>' +
-        '</div>' +
-        '</h2>'
-    );
+            E({
+                id: 'name', children: [
+                    E({ element: 'span', className: store.PLAYER.cls, text: store.PLAYER.nickname }),
+                    E({ element: 'a', attributes: { href: "https://intel.ingress.com/logout" }, id: 'signout', text: 'sign out' }),
+                ]
+            }),
+            E({
+                id: 'stats', children: [
+                    E({ element: 'sup', text: 'XM: ' + store.PLAYER.xmRatio + '%' }),
+                    E({ element: 'sub', text: (store.PLAYER.min_ap_for_next_level > 0 ? 'level: ' + store.PLAYER.lvlApProg + '%' : 'max level') }),
+                ]
+            }),
+        ]
+    }))
+
+    /*    $('#playerstat').html('' +
+           '<h2 title="' + t + '">' + store.PLAYER.verified_level + '&nbsp;' +
+           '<div id="name">' +
+   
+           '<span class="' + store.PLAYER.cls + '">' + store.PLAYER.nickname + '</span>' +
+           '<a href="https://intel.ingress.com/logout" id="signout">sign out</a>' +
+           '</div>' +
+           '<div id="stats">' +
+           '<sup>XM: ' + store.PLAYER.xmRatio + '%</sup>' +
+           '<sub>' + (store.PLAYER.min_ap_for_next_level > 0 ? 'level: ' + store.PLAYER.lvlApProg + '%' : 'max level') + '</sub>' +
+           '</div>' +
+           '</h2>'
+       ); */
 
 
 }
@@ -598,10 +617,10 @@ const setupTooltips = function (element?: JQuery<any>) {
         }
     }); */
 
-    // @ts-ignore
-    if (!window.tooltipClearerHasBeenSetup) {
-        // @ts-ignore
-        window.tooltipClearerHasBeenSetup = true;
+ 
+    if (!store.tooltipClearerHasBeenSetup) {
+ 
+        store.tooltipClearerHasBeenSetup = true;
         $(document).on('click', '.ui-tooltip', function () { $(this).remove(); });
     }
 }
@@ -611,8 +630,8 @@ const setupTooltips = function (element?: JQuery<any>) {
 
 const setupLayerChooserApi = function () {
     // hide layer chooser if booted with the iitcm android app
-    // @ts-ignore
-    if (typeof android !== 'undefined' && android && android.setLayers) {
+  
+    if (typeof android != undefined && android && android.setLayers) {
         $('.leaflet-control-layers').hide();
     }
 
@@ -971,7 +990,7 @@ function prepPluginsToLoad() {
 
 
 export const boot = function () {
-  
+
     runOnSmartphonesBeforeBoot()
 
     const loadPlugins = prepPluginsToLoad();
@@ -1019,7 +1038,7 @@ export const boot = function () {
     runOnSmartphonesAfterBoot();
     runHooks('iitcLoaded');
 
-     // fixed Addons
+    // fixed Addons
     const rboard = new RegionScoreboard()
 
     rboard.setup()
