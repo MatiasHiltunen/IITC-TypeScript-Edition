@@ -4,7 +4,7 @@ import { E } from "../tools/dom_manipulation";
 // ts-ignore is required here as the esbuild does the injection in the build time.
 
 // @ts-ignore
-import cssStyles from '../style/style.txt'
+ import cssStyles from '../style/style.txt'
 // @ts-ignore
 import leafletStyles from '../style/leaflet.txt'
 // @ts-ignore
@@ -13,8 +13,8 @@ import loginStyle from '../style/login.txt';
 export const head = E({
     element: 'head', children: [
         E({ element: 'title', text: 'Ingress Intel Map - TS' }),
-        E({ element: 'style', text: cssStyles }),
-        E({ element: 'style', text: leafletStyles }),
+         E({ element: 'style', text: cssStyles }),
+         E({ element: 'style', text: leafletStyles }),
         E({
             element: 'link', attributes: {
                 rel: "stylesheet",

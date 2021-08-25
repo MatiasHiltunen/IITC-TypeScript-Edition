@@ -4,7 +4,7 @@ import { readdirSync, rmSync } from 'fs'
 
 const isServe = process.argv.includes("serve");
 const buildConfig = {
-    entryPoints: ['./core/total-conversion-build.ts'],
+    entryPoints: ['./core/total-conversion-build.tsx'],
     bundle: true,
     minify: true,
     sourcemap: false,

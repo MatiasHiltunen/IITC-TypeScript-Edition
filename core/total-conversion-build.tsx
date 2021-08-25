@@ -3,10 +3,13 @@
 import { boot } from "./code/boot";
 import { Player } from "./code/player";
 import { store } from "./code/store";
-import { body } from "./views/body";
+
 import { head, loginHead } from "./views/head";
+import App from './views/app'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 
-
+/* import { E } from "./tools/dom_manipulation"; */
 
 declare global {
   var plugin: any;  // window.plugin is needed for monkeyscript
@@ -17,7 +20,7 @@ declare global {
 }
 
 // ensure plugin framework is there, even if iitc is not yet loaded
-if (typeof window.plugin !== 'function') window.plugin = function() {};
+if (typeof window.plugin !== 'function') window.plugin = function () { };
 
 window.script_info = plugin_info;
 
@@ -46,13 +49,24 @@ if (!window.PLAYER || !PLAYER.nickname) {
 
 store.PLAYER = new Player(window.PLAYER)
 
+
+
 document.head.innerHTML = ''
-document.head.append(head)
-document.body = body
-
-window.addEventListener('load', boot);
+document.head.replaceWith(head)
+document.body.innerHTML = '<div id="root"></div>'
 
 
 
 
+ReactDOM.render(
+  <App></App>,
+  document.getElementById('root')
+);
+window.addEventListener('load', ()=>{
+  /* boot() */
 
+});
+
+
+
+/*  */
