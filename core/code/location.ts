@@ -4,22 +4,20 @@
 
 import { DEFAULT_ZOOM } from "./config";
 import { getURLParam, readCookie, writeCookie } from "./utils_misc";
-import L from 'leaflet'
+import L, { LatLng } from 'leaflet'
 import { store } from "./store";
 
 
 // retrieves current position from map and stores it cookies
-export const storeMapPosition = function () {
+export const storeMapPosition = (center: LatLng, zoom:number) => {
 
-  const m = store.map.getCenter();
+  if (center['lat'] >= -90 && center['lat'] <= 90)
+    writeCookie('ingress.intelmap.lat', center['lat']);
 
-  if (m['lat'] >= -90 && m['lat'] <= 90)
-    writeCookie('ingress.intelmap.lat', m['lat']);
+  if (center['lng'] >= -180 && center['lng'] <= 180)
+    writeCookie('ingress.intelmap.lng', center['lng']);
 
-  if (m['lng'] >= -180 && m['lng'] <= 180)
-    writeCookie('ingress.intelmap.lng', m['lng']);
-
-  writeCookie('ingress.intelmap.zoom', store.map.getZoom());
+  writeCookie('ingress.intelmap.zoom', zoom);
 }
 
 

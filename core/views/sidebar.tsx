@@ -10,7 +10,7 @@ class SideBar extends React.Component {
           <span className="toggle close" />
         </a>
         <div id="scrollwrapper">
-          <div id="sidebar" /* style={{ display: 'none' }} */>
+          <div id="sidebar" style={{ display: 'none' }}>
             <div id="playerstat">t</div>
             <div id="gamestat">&nbsp;loading global control stats</div>
             <div id="searchwrapper">

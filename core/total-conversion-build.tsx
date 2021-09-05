@@ -51,8 +51,8 @@ store.PLAYER = new Player(window.PLAYER)
 
 interface NianticParams {
   version: string
-  zoomToLevel: any,
-  tilesPerEdge: any
+  zoomToLevel: number[],
+  tilesPerEdge: number[]
 }
 
 

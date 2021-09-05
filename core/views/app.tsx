@@ -2,6 +2,7 @@
 
 
 import * as React from 'react'
+import { extractFromStock, NianticParams } from '../functions/extract'
 import ChatComponent from './chat'
 import Header from './header'
 import IitcMap from './map'
@@ -11,8 +12,8 @@ import UpdateStatus from './updateStatus'
 
 
 const getCsrfToken = () => document.cookie.split(";")
-    .find(a => a.includes('csrftoken'))
-    .split("=")[1].trim()
+  .find(a => a.includes('csrftoken'))
+  .split("=")[1].trim()
 
 
 class PlayButton extends React.Component {
@@ -21,19 +22,32 @@ class PlayButton extends React.Component {
   }
 }
 
-class App extends React.Component {
-  componentDidMount(){
-    console.log(getCsrfToken())
+interface AppState {
+  niaData: NianticParams
+}
+
+interface AppProps {
+
+}
+
+class App extends React.Component<AppProps, AppState> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      niaData: { ...extractFromStock(), token: getCsrfToken() }
+    }
   }
+
 
   render() {
     return <div>
-      <IitcMap></IitcMap>
-      <ChatComponent></ChatComponent>
+      <IitcMap niaData={this.state.niaData}></IitcMap>
+{/*       <ChatComponent></ChatComponent>
       <SideBar></SideBar>
       <UpdateStatus></UpdateStatus>
       <PlayButton></PlayButton>
-      <Header></Header>
+      <Header></Header> */}
     </div>
   }
 

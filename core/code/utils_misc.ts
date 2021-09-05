@@ -161,7 +161,7 @@ export const readCookie = function(name) {
     return cookies[name];
 }
 
-export const writeCookie = function(name, val) {
+export const writeCookie = (name, val) => {
     let d = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000).toUTCString();
     document.cookie = name + "=" + val + '; expires=' + d + '; path=/';
 }
